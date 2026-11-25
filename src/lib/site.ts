@@ -6,7 +6,7 @@ export const profile = {
   location: "Pretoria, Gauteng",
   status: "Open to graduate software engineering roles",
   email: "unathidlamini83@gmail.com",
-  linkedin: "https://www.linkedin.com/in/unathi-dlamini237007224",
+  linkedin: "https://www.linkedin.com/in/unathi-dlamini-237007224",
   github: "https://github.com/unathi3",
   summary:
     "BSc Computer Science graduate from the University of Pretoria, finishing BSc Honours in November 2026. I build mobile apps with React Native and TypeScript, backends in Python and Flask, and I test what I build.",
