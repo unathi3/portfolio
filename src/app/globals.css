@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0b0b0c;
+  --surface: #131315;
+  --text: #f4f3ee;
+  --muted: #9a9aa2;
+  --line: #f4f3ee;
+  --line-dim: #2a2a2e;
+  --accent: #2f5bff;       /* royal blue: fills, borders, large type */
+  --accent-text: #7b97ff;  /* lighter blue for small text on dark */
+  --display: var(--font-archivo-black), "Arial Black", sans-serif;
+  --sans: var(--font-inter), system-ui, sans-serif;
+  --gutter: clamp(16px, 4vw, 48px);
+}
+
+@layer base {
+* { border-radius: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--accent); color: #fff; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+}
+
+@layer components {
+
+.wrap { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 var(--gutter); }
+.display { font-family: var(--display); font-weight: 400; letter-spacing: -0.02em; line-height: 0.92; text-transform: uppercase; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.rule { border-top: 2px solid var(--line); }
+
+/* Section header: big number + title on a hard rule */
+.sec-head { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 1rem 2rem; padding: 1.25rem 0 2.5rem; border-top: 2px solid var(--line); }
+.sec-head .num { font-family: var(--display); color: var(--accent); font-size: clamp(14px, 1.4vw, 18px); }
+.sec-head h2 { font-size: clamp(40px, 7vw, 96px); }
+
+/* Brutalist buttons: hard offset shadow, press-in on hover */
+.btn {
+  display: inline-flex; align-items: center; gap: .6rem;
+  padding: .9rem 1.3rem; border: 2px solid var(--line); background: var(--bg);
+  font-weight: 700; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; text-decoration: none;
+  box-shadow: 5px 5px 0 var(--accent); transition: transform .12s, box-shadow .12s;
+}
+.btn:hover { transform: translate(5px, 5px); box-shadow: 0 0 0 var(--accent); }
+.btn-solid { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 5px 5px 0 var(--line); }
+.btn-solid:hover { box-shadow: 0 0 0 var(--line); }
+
+/* Work cards: number, title, context; the result slides up on hover/focus */
+.card {
+  position: relative; display: flex; flex-direction: column; min-height: 380px;
+  border: 2px solid var(--line); background: var(--bg); text-decoration: none; overflow: hidden;
+  transition: transform .15s, box-shadow .15s;
+}
+.card:hover, .card:focus-visible { transform: translate(-4px, -4px); box-shadow: 8px 8px 0 var(--accent); outline: none; }
+.card .big { font-family: var(--display); font-size: clamp(72px, 9vw, 128px); line-height: .8; color: transparent; -webkit-text-stroke: 2px var(--line); }
+.card:hover .big, .card:focus-visible .big { color: var(--accent); -webkit-text-stroke-color: var(--accent); }
+.card .reveal {
+  position: absolute; inset: auto 0 0 0; background: var(--accent); color: #fff; padding: 1.25rem 1.5rem;
+  transform: translateY(101%); transition: transform .25s cubic-bezier(.2,.7,.2,1);
+}
+.card:hover .reveal, .card:focus-visible .reveal { transform: none; }
+@media (hover: none) { .card .reveal { position: static; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .card, .card .reveal, .btn { transition: none; } }
+
+.chip { display: inline-block; border: 1.5px solid var(--line-dim); padding: .2rem .55rem; font-size: 12px; font-weight: 600; color: var(--muted); }
+
+/* Marquee strip */
+.marquee { overflow: hidden; border-block: 2px solid var(--line); background: var(--accent); color: #fff; }
+.marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+.marquee-track span { font-family: var(--display); text-transform: uppercase; font-size: clamp(18px, 2.4vw, 28px); padding: .6rem 1.5rem; white-space: nowrap; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+/* Grid tables (skills, education) */
+.grid-table > * { border-top: 2px solid var(--line-dim); }
+.grid-table > *:last-child { border-bottom: 2px solid var(--line-dim); }
+}
