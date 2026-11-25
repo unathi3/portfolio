@@ -32,6 +32,12 @@ const personLd = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${archivoBlack.variable} ${inter.variable}`}>
+      <head>
+        {/* Without JavaScript the scroll reveals never run, so show everything. */}
+        <noscript>
+          <style>{`[style*="opacity:0"]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
+      </head>
       <body>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] btn btn-solid">
           Skip to content

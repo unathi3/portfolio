@@ -146,8 +146,8 @@ export default function Home() {
         <div className="grid grid-cols-12 gap-6">
           <Reveal className="col-span-12 lg:col-span-7">
             <p className="mb-6 text-xl text-[var(--muted)]">Hiring for a graduate role, or want to talk about a project? Email is quickest.</p>
-            <a href={`mailto:${profile.email}`} className="display block [overflow-wrap:anywhere] text-[clamp(17px,4.2vw,56px)] text-[var(--text)] no-underline decoration-[var(--accent)] decoration-4 underline-offset-8 hover:underline">
-              {profile.email}
+            <a href={`mailto:${profile.email}`} className="display block [overflow-wrap:anywhere] text-[clamp(17px,2.6vw,36px)] text-[var(--text)] no-underline decoration-[var(--accent)] decoration-4 underline-offset-8 hover:underline">
+              {profile.email.split("@")[0]}@<wbr />{profile.email.split("@")[1]}
             </a>
           </Reveal>
           <Reveal delay={0.1} className="col-span-12 lg:col-span-4 lg:col-start-9">
