@@ -33,6 +33,7 @@ export const work: Work[] = [
     result:
       "Commuters see when a taxi is close and how long it will take, and can preview a journey with more than one leg before they set off.",
     stack: ["React Native", "Expo", "TypeScript", "Convex", "Jest", "k6", "JMeter"],
+    github: "https://github.com/COS301-SE-2025/TaxiTap.git",
   },
   {
     slug: "jse-portfolio-tracker",
